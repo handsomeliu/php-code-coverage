@@ -35,7 +35,7 @@ class PHP_CodeCoverage_Report_XML_Tests
         $this->contextNode = $context;
     }
 
-    public function addTest($test, array $result)
+    public function addTest($test, $result)
     {
         $node = $this->contextNode->appendChild(
             $this->contextNode->ownerDocument->createElementNS(
@@ -44,9 +44,8 @@ class PHP_CodeCoverage_Report_XML_Tests
             )
         );
         $node->setAttribute('name', $test);
-        $node->setAttribute('size', $result['size']);
-        $node->setAttribute('result', (int) $result['status']);
-        $node->setAttribute('status', $this->codeMap[(int) $result['status']]);
+        $node->setAttribute('result', (int) $result);
+        $node->setAttribute('status', $this->codeMap[(int) $result]);
 
     }
 }

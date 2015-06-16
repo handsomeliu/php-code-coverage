@@ -28,6 +28,8 @@ class PHP_CodeCoverage_Report_Factory
     public function create(PHP_CodeCoverage $coverage)
     {
         $files      = $coverage->getData();
+        //var_dump($files);
+        
         $commonPath = $this->reducePaths($files);
         $root       = new PHP_CodeCoverage_Report_Node_Directory(
             $commonPath,
